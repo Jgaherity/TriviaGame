@@ -14,6 +14,16 @@ $(document).ready(function() {
         console.log(correct);
     });
 
+    var windowTimeout = function(){
+        console.log()
+        setTimeout(function() {
+        alert("Add element.");
+        $( ".modal" ).addClass("overlay");
+        $(".backgroundImage").append($("<div class='modal'>"));
+      }, 1000);
+    }
+    windowTimeout()
+
 
 
 });
