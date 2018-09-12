@@ -113,8 +113,10 @@ $(document).ready(function() {
     var windowTimeout = function(){
         console.log()
         setTimeout(function() {
-        alert("You ran out of time. Your score is: " + correct);
-        $(".backgroundImage").append($("<div class='modal'>"));
+        //alert("You ran out of time. Your score is: " + correct);
+        //$(".emptyDiv").append($("<div class='modal'>"));
+        $('.modal').addClass('display');
+        $('#score').text(correct);
       }, 15000);
     }
     windowTimeout();
