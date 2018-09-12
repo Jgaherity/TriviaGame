@@ -27,40 +27,40 @@ $(document).ready(function() {
         $("#question7").text("7. " + response.results[6].question);
 
         //answers 
-        $("#1answera").text("A. " + response.results[0].incorrect_answers[0]);
-        $("#1answerb").text("B. " + response.results[0].incorrect_answers[1]);
-        $("#1answerc").text("C. " + response.results[0].incorrect_answers[2]);
-        $("#1answerd").text("D. " + response.results[0].correct_answer);
+        $("#1answera").text(response.results[0].incorrect_answers[0]);
+        $("#1answerb").text(response.results[0].incorrect_answers[1]);
+        $("#1answerc").text(response.results[0].incorrect_answers[2]);
+        $("#1answerd").text(response.results[0].correct_answer);
 
-        $("#2answera").text("A. " + response.results[1].incorrect_answers[0]);
-        $("#2answerb").text("B. " + response.results[1].correct_answer);
-        $("#2answerd").text("D. " + response.results[1].incorrect_answers[1]);
-        $("#2answerc").text("C. " + response.results[1].incorrect_answers[2]);
+        $("#2answera").text(response.results[1].incorrect_answers[0]);
+        $("#2answerb").text(response.results[1].correct_answer);
+        $("#2answerd").text(response.results[1].incorrect_answers[1]);
+        $("#2answerc").text(response.results[1].incorrect_answers[2]);
 
-        $("#3answerd").text("D. " + response.results[2].incorrect_answers[0]);
-        $("#3answera").text("A. " + response.results[2].correct_answer);
-        $("#3answerb").text("B. " + response.results[2].incorrect_answers[1]);
-        $("#3answerc").text("C. " + response.results[2].incorrect_answers[2]);
+        $("#3answerd").text(response.results[2].incorrect_answers[0]);
+        $("#3answera").text(response.results[2].correct_answer);
+        $("#3answerb").text(response.results[2].incorrect_answers[1]);
+        $("#3answerc").text(response.results[2].incorrect_answers[2]);
 
-        $("#4answerc").text("C. " + response.results[3].correct_answer);
-        $("#4answera").text("A. " + response.results[3].incorrect_answers[0]);
-        $("#4answerb").text("B. " + response.results[3].incorrect_answers[1]);
-        $("#4answerd").text("D. " + response.results[3].incorrect_answers[2]);
+        $("#4answerc").text(response.results[3].correct_answer);
+        $("#4answera").text(response.results[3].incorrect_answers[0]);
+        $("#4answerb").text(response.results[3].incorrect_answers[1]);
+        $("#4answerd").text(response.results[3].incorrect_answers[2]);
 
-        $("#5answera").text("A. " + response.results[4].incorrect_answers[0]);
-        $("#5answerb").text("B. " + response.results[4].incorrect_answers[1]);
-        $("#5answerc").text("C. " + response.results[4].incorrect_answers[2]);
-        $("#5answerd").text("D. " + response.results[4].correct_answer);
+        $("#5answera").text(response.results[4].incorrect_answers[0]);
+        $("#5answerb").text(response.results[4].incorrect_answers[1]);
+        $("#5answerc").text(response.results[4].incorrect_answers[2]);
+        $("#5answerd").text(response.results[4].correct_answer);
 
-        $("#6answera").text("A. " + response.results[5].incorrect_answers[0]);
-        $("#6answerb").text("B. " + response.results[5].incorrect_answers[1]);
-        $("#6answerc").text("C. " + response.results[5].incorrect_answers[2]);
-        $("#6answerd").text("D. " + response.results[5].correct_answer);
+        $("#6answera").text(response.results[5].incorrect_answers[0]);
+        $("#6answerb").text(response.results[5].incorrect_answers[1]);
+        $("#6answerc").text(response.results[5].incorrect_answers[2]);
+        $("#6answerd").text(response.results[5].correct_answer);
 
-        $("#7answerc").text("C. " + response.results[6].correct_answer);
-        $("#7answera").text("A. " + response.results[6].incorrect_answers[0]);
-        $("#7answerb").text("B. " + response.results[6].incorrect_answers[1]);
-        $("#7answerd").text("D. " + response.results[6].incorrect_answers[2]);
+        $("#7answerc").text(response.results[6].correct_answer);
+        $("#7answera").text(response.results[6].incorrect_answers[0]);
+        $("#7answerb").text(response.results[6].incorrect_answers[1]);
+        $("#7answerd").text(response.results[6].incorrect_answers[2]);
 
 
         $(".selected").on("click", function() {
@@ -71,37 +71,37 @@ $(document).ready(function() {
         if(response.results[0].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         } 
         else if (response.results[1].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else if (response.results[2].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else if (response.results[3].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else if (response.results[4].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else if (response.results[5].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else if (response.results[6].correct_answer == temp){
             console.log("right");
             correct++;
-            alert(correct);
+            //alert(correct);
         }
         else{
             console.log("wrong");
@@ -115,8 +115,8 @@ $(document).ready(function() {
         setTimeout(function() {
         alert("You ran out of time. Your score is: " + correct);
         $(".backgroundImage").append($("<div class='modal'>"));
-      }, 2000);
+      }, 15000);
     }
-    //windowTimeout();
+    windowTimeout();
 
 });
