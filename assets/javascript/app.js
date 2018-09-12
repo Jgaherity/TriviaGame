@@ -3,109 +3,120 @@
 //player cannot pick more than one answer per question
 
 //when html loads, execute function
+
+
+
 $(document).ready(function() {
 
-    var trivia = {
-        first: {
-            question: '1. Created in 2009, what was the first decentralized cryptocurrency?',
-            answers: {
-                a: 'Z-Cash', 
-                b: 'LiteCoin',
-                c: 'Bitcoin',
-                d: 'Bitcoin cash'
-            },
-            correctAnswers: {
-                a: 'Bitcoin',
-            }
-        },
-        second: {
-            question: '2. Created in 2009, what was the first decentralized cryptocurrency?',
-            answers: {
-                a: 'Z-Cash',
-                b: 'LiteCoin',
-                c: 'Bitcoin',
-                d: 'Bitcoin cash'
-            },
-            correctAnswers: {
-                a: 'Bitcoin',
-            }
-        },
-        third: {
-            question: '3. Created in 2009, what was the first decentralized cryptocurrency?',
-            answers: {
-                a: 'Z-Cash',
-                b: 'LiteCoin',
-                c: 'Bitcoin',
-                d: 'Bitcoin cash'
-            },
-            correctAnswers: {
-                a: 'Bitcoin',
-            }
-        }
-    }
-
-
     var correct = 0;
-    //all correct possible answers
-    //jquery click functions for each correct answer 
-    // $( ".answer" ).click(function() {
-    //     if(this.id == "correct"){
-    //         correct++;
-    //         alert(correct);
-    //         console.log(correct);
-    //     }
-    // });
 
-    $("#question1").text(trivia.first.question);
-    $("#question2").text(trivia.second.question);
-    $("#question3").text(trivia.third.question);
+        $.ajax({
+          url: "https://opentdb.com/api.php?amount=7&category=24&difficulty=easy&type=multiple",
+          //url: "https://opentdb.com/api.php?amount=5&category=24&difficulty=easy&type=multiple",
+          method: "GET"
+        }).then(function(response) {
+           
+        console.log(response);
+        //questions
+        $("#question1").text("1. " + response.results[0].question);
+        $("#question2").text("2. " + response.results[1].question);
+        $("#question3").text("3. " + response.results[2].question);
+        $("#question4").text("4. " + response.results[3].question);
+        $("#question5").text("5. " + response.results[4].question);
+        $("#question6").text("6. " + response.results[5].question);
+        $("#question7").text("7. " + response.results[6].question);
 
-    $("#1answera").text(trivia.first.answers.a);
-    $("#1answerb").text(trivia.first.answers.b);
-    $("#1answerc").text(trivia.first.answers.c);
-    $("#1answerd").text(trivia.first.answers.d);
+        //answers 
+        $("#1answera").text("A. " + response.results[0].incorrect_answers[0]);
+        $("#1answerb").text("B. " + response.results[0].incorrect_answers[1]);
+        $("#1answerc").text("C. " + response.results[0].incorrect_answers[2]);
+        $("#1answerd").text("D. " + response.results[0].correct_answer);
 
-    //IF selected answer == trivia.first.correctAnswers.a, correct++
-    //capture value of click
-    $(".selected1").on("click", function() {
-        //alert("Selected thing");
+        $("#2answera").text("A. " + response.results[1].incorrect_answers[0]);
+        $("#2answerb").text("B. " + response.results[1].correct_answer);
+        $("#2answerd").text("D. " + response.results[1].incorrect_answers[1]);
+        $("#2answerc").text("C. " + response.results[1].incorrect_answers[2]);
+
+        $("#3answerd").text("D. " + response.results[2].incorrect_answers[0]);
+        $("#3answera").text("A. " + response.results[2].correct_answer);
+        $("#3answerb").text("B. " + response.results[2].incorrect_answers[1]);
+        $("#3answerc").text("C. " + response.results[2].incorrect_answers[2]);
+
+        $("#4answerc").text("C. " + response.results[3].correct_answer);
+        $("#4answera").text("A. " + response.results[3].incorrect_answers[0]);
+        $("#4answerb").text("B. " + response.results[3].incorrect_answers[1]);
+        $("#4answerd").text("D. " + response.results[3].incorrect_answers[2]);
+
+        $("#5answera").text("A. " + response.results[4].incorrect_answers[0]);
+        $("#5answerb").text("B. " + response.results[4].incorrect_answers[1]);
+        $("#5answerc").text("C. " + response.results[4].incorrect_answers[2]);
+        $("#5answerd").text("D. " + response.results[4].correct_answer);
+
+        $("#6answera").text("A. " + response.results[5].incorrect_answers[0]);
+        $("#6answerb").text("B. " + response.results[5].incorrect_answers[1]);
+        $("#6answerc").text("C. " + response.results[5].incorrect_answers[2]);
+        $("#6answerd").text("D. " + response.results[5].correct_answer);
+
+        $("#7answerc").text("C. " + response.results[6].correct_answer);
+        $("#7answera").text("A. " + response.results[6].incorrect_answers[0]);
+        $("#7answerb").text("B. " + response.results[6].incorrect_answers[1]);
+        $("#7answerd").text("D. " + response.results[6].incorrect_answers[2]);
+
+
+        $(".selected").on("click", function() {
+        //user is able to select more than one... unsure how to only highlihgt one with jquery 
+        $(this).addClass("active");
         var temp = $(this).html();
-        //console.log(temp);
-        if(trivia.first.correctAnswers.a == temp){
+        //wish there was a way to may results[i] instead of individual numbers. for loop isnt appropriate here tho. 
+        if(response.results[0].correct_answer == temp){
             console.log("right");
             correct++;
-        } else{
-            console.log("wrong");
+            alert(correct);
+        } 
+        else if (response.results[1].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
         }
-        //console.log("Correct answer: " + trivia.first.correctAnswers.a);
-        //console.log("Guessed answer: " + temp);
-        //console.log(temp);
-
-      });
-
-
-    
-    $("#2answera").text(trivia.second.answers.a);
-    $("#2answerb").text(trivia.second.answers.b);
-    $("#2answerc").text(trivia.second.answers.c);
-    $("#2answerd").text(trivia.second.answers.d);
-
-    //IF selected answer == trivia.first.correctAnswers.a, correct++
-    $("#3answera").text(trivia.third.answers.a);
-    $("#3answerb").text(trivia.third.answers.b);
-    $("#3answerc").text(trivia.third.answers.c);
-    $("#3answerd").text(trivia.third.answers.d);
-
-    
+        else if (response.results[2].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
+        }
+        else if (response.results[3].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
+        }
+        else if (response.results[4].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
+        }
+        else if (response.results[5].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
+        }
+        else if (response.results[6].correct_answer == temp){
+            console.log("right");
+            correct++;
+            alert(correct);
+        }
+        else{
+            console.log("wrong");
+        }   
+        });
+    });
 
 
     var windowTimeout = function(){
-        //console.log()
+        console.log()
         setTimeout(function() {
         alert("You ran out of time. Your score is: " + correct);
-        //$(".backgroundImage").append($("<div class='modal'>"));
+        $(".backgroundImage").append($("<div class='modal'>"));
       }, 2000);
     }
-    windowTimeout();
+    //windowTimeout();
 
 });
