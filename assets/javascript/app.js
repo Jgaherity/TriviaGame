@@ -3,8 +3,7 @@
 //player cannot pick more than one answer per question
 
 //when html loads, execute function
-
-
+//unsure how to make this recursive. could use some help!
 
 $(document).ready(function() {
 
@@ -15,7 +14,8 @@ $(document).ready(function() {
           //url: "https://opentdb.com/api.php?amount=5&category=24&difficulty=easy&type=multiple",
           method: "GET"
         }).then(function(response) {
-           
+        
+        
         console.log(response);
         //questions
         $("#question1").text("1. " + response.results[0].question);
